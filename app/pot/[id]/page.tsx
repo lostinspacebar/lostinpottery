@@ -55,7 +55,7 @@ export default async function PotDetails({
             dangerouslySetInnerHTML={{ __html: details }}
           />
         </div>
-        <div className="gallery">{gallery}</div>
+        <div className="gallery col-span-2">{gallery}</div>
       </div>
     </div>
   );
