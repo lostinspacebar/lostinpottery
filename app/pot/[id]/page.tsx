@@ -13,6 +13,11 @@ export default async function PotDetails({
   params: { id: string };
 }) {
   const pot = await getPot(params.id, true);
+  const fullPageContent = pot.pageContent as string;
+  const contentParts = fullPageContent.split("<p>{{DETAILS}}</p>");
+  const description = contentParts[0] ?? "";
+  const details = contentParts[1] ?? "";
+
   const gallery = pot.images.map((image) => (
     <div key={image} className="gallery-item w-full mb-4 md:mb-8">
       <a href={image}>
@@ -20,6 +25,15 @@ export default async function PotDetails({
       </a>
     </div>
   ));
+
+  const claimButton =
+    pot.status === "available" ? (
+      <button className="btn btn-wide">Get this mug!</button>
+    ) : (
+      <button className="btn btn-wide" disabled aria-disabled>
+        Sorry, someone already has this mug.
+      </button>
+    );
 
   return (
     <div>
@@ -29,8 +43,20 @@ export default async function PotDetails({
         </a>
       </p>
       <h2>{pot.name}</h2>
-      <div className="pageContent" dangerouslySetInnerHTML={{ __html: pot.pageContent }} />
-      <div className="relative columns-3 gap-4 md:gap-8 gallery">{gallery}</div>
+      <div className="grid grid-cols-3 gap-8">
+        <div className="col-span-2">
+          <div
+            className="potDescription"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
+          {claimButton}
+          <div
+            className="potDetails"
+            dangerouslySetInnerHTML={{ __html: details }}
+          />
+        </div>
+        <div className="gallery">{gallery}</div>
+      </div>
     </div>
   );
 }

@@ -120,20 +120,12 @@ p {
   padding: 0.25em 0 0.5em 0;
 }
 
+.gallery {
+  @apply relative columns-2 gap-2 md:gap-4
+}
+
 .gallery-item {
-  filter: drop-shadow(0px 0px 2em #00000033);
-}
-
-.gallery-zoom-content {
-  max-width: 100%;
-  height: calc(100vh - 5em);
-  background-color: transparent;
-  box-shadow: none;
-}
-
-.gallery-zoom-content img {
-  border-radius: 2em;
-  filter: drop-shadow(0px 0px 5em #00000033);
+  filter: drop-shadow(0px 0px 1em #00000033);
 }
 
 @layer base {
@@ -144,6 +136,20 @@ p {
   }
 }
 
-.pageContent {
+.potDescription {
+  padding-bottom: 1em;
+}
+
+.potDetails {
   padding-bottom: 3em;
+}
+
+.btn[disabled], .btn:disabled {
+  color: #000;
+}
+
+.btn-wide {
+  width: auto;
+  min-width: 16rem;
+  padding: 0 3em 0 3em;
 }

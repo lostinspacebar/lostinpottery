@@ -15,6 +15,8 @@ This mug is part of a series of mugs that have a climbing theme.
 
 This one uses a pinch handle that mimics a climbing wall with a crack. The art on the mug shows popular views in Yosemite including the Dawn Wall and the Tunnel View.
 
+{{DETAILS}}
+
 ### Process
 
 The base mug was thrown out of *speckled buff*. 

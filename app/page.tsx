@@ -19,12 +19,13 @@ export default async function Home() {
     <div>
       <div className="relative columns-2 gap-4 md:gap-8">
         <div className="relative card main-card">
-          <img
-            className="w-full object-cover"
-            src="/images/main-card-bg.jpg"
-          />
+          <img className="w-full object-cover" src="/images/main-card-bg.jpg" />
           <div className="info absolute bottom-0">
-            Hi!<br/>My name is Aditya,<br/>and I like making pots.
+            Hi!
+            <br />
+            My name is Aditya,
+            <br />
+            and I like making pots.
           </div>
         </div>
         {cards}
