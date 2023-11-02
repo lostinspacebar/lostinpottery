@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind screens;
 
 body {
   font-family: 'Rubik', sans-serif;
@@ -110,6 +111,15 @@ h2 {
   font-size: 3em;
 }
 
+h3 {
+  font-size: 1.75em;
+  padding: 0.75em 0 0.25em 0;
+}
+
+p {
+  padding: 0.25em 0 0.5em 0;
+}
+
 .gallery-item {
   filter: drop-shadow(0px 0px 2em #00000033);
 }
@@ -124,4 +134,16 @@ h2 {
 .gallery-zoom-content img {
   border-radius: 2em;
   filter: drop-shadow(0px 0px 5em #00000033);
+}
+
+@layer base {
+  ul, ol {
+    list-style: revert;
+    margin: revert;
+    padding: revert;
+  }
+}
+
+.pageContent {
+  padding-bottom: 3em;
 }

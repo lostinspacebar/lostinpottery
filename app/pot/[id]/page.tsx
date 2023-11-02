@@ -12,7 +12,7 @@ export default async function PotDetails({
 }: {
   params: { id: string };
 }) {
-  const pot = await getPot(params.id);
+  const pot = await getPot(params.id, true);
   const gallery = pot.images.map((image) => (
     <div key={image} className="gallery-item w-full mb-4 md:mb-8">
       <a href={image}>
@@ -29,6 +29,7 @@ export default async function PotDetails({
         </a>
       </p>
       <h2>{pot.name}</h2>
+      <div className="pageContent" dangerouslySetInnerHTML={{ __html: pot.pageContent }} />
       <div className="relative columns-3 gap-4 md:gap-8 gallery">{gallery}</div>
     </div>
   );
