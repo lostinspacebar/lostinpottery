@@ -1,35 +1,34 @@
-export default function Home() {
+import { getAllPots } from "@/lib/getPots";
+
+export default async function Home() {
+  const pots = await getAllPots();
+  const cards = pots.map((pot) => (
+    <div key={pot.id} className="relative card">
+      <a href={pot.link}>
+        <img className="w-full object-cover mt-4 md:mt-8" src={pot.heroImage} />
+        <div className="info">
+          <h2>{pot.name}</h2>
+          <div className="description">{pot.description}</div>
+          <div className="status">{pot.status}</div>
+        </div>
+      </a>
+    </div>
+  ));
+
   return (
-    <main className="flex min-h-screen flex-col justify-between p-4">
-      <div className="relative flex min-h-screen flex-col py-6 sm:py-12">
-        <div className="columns-1 md:columns-2 2xl:columns-3 gap-10 [column-fill:_balance] box-border mx-auto before:box-inherit after:box-inherit">
-          <div style={{ width: "400px" }} className="w-full break-inside-avoid p-8 mb-6 bg-gray-100 rounded-lg">
-            <p>Really long content</p>
-          </div>
-          <div style={{ width: "400px" }} className="w-full break-inside-avoid p-8 mb-6 bg-gray-100 rounded-lg">
-            <p>Really long content</p>
-            <p>Really long content</p>
-            <p>Really long content</p>
-            <p>Really long content</p>
-          </div>
-          <div style={{ width: "400px" }} className="w-full break-inside-avoid p-8 mb-6 bg-gray-100 rounded-lg">
-            <p>Really long content</p>
-            <p>Really long content</p>
-          </div>
-          <div style={{ width: "400px" }} className="w-full break-inside-avoid p-8 mb-6 bg-gray-100 rounded-lg">
-            <p>Really long content</p>
-            <p>Really long content</p>
-            <p>Really long content</p>
-            <p>Really long content</p>
-            <p>Really long content</p>
-          </div>
-          <div style={{ width: "400px" }} className="w-full break-inside-avoid p-8 mb-6 bg-gray-100 rounded-lg">
-            <p>Really long content</p>
-            <p>Really long content</p>
-            <p>Really long content</p>
+    <div>
+      <div className="relative columns-2 gap-4 md:gap-8">
+        <div className="relative card main-card">
+          <img
+            className="w-full object-cover"
+            src="/images/main-card-bg.jpg"
+          />
+          <div className="info absolute bottom-0">
+            Hi!<br/>My name is Aditya,<br/>and I like making pots.
           </div>
         </div>
+        {cards}
       </div>
-    </main>
+    </div>
   );
 }
