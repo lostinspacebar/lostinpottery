@@ -43,8 +43,8 @@ export default async function PotDetails({
         </a>
       </p>
       <h2>{pot.name}</h2>
-      <div className="grid grid-cols-3 gap-8">
-        <div className="col-span-2">
+      <div className="grid grid-cols-5 gap-8">
+        <div className="col-span-3">
           <div
             className="potDescription"
             dangerouslySetInnerHTML={{ __html: description }}
