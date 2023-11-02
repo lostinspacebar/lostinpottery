@@ -10,36 +10,6 @@ body {
   padding: 2em;
 }
 
-@media only screen and (max-width: 339px) {
-  body {
-    font-size: 6px;
-  }
-}
-
-@media only screen and (min-width: 340px) {
-  body {
-    font-size: 7px;
-  }
-}
-
-@media only screen and (min-width: 448px) {
-  body {
-    font-size: 11px;
-  }
-}
-
-@media only screen and (min-width: 900px) {
-  body {
-    font-size: 13px;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  body {
-    font-size: 1.1vw;
-  }
-}
-
 .card {
   overflow: visible;
 }
@@ -150,6 +120,44 @@ p {
 
 .btn-wide {
   width: auto;
-  min-width: 16rem;
-  padding: 0 3em 0 3em;
+  font-size: 1em;
+  @apply w-full;
+}
+
+@media only screen and (max-width: 339px) {
+  body {
+    font-size: 6px;
+  }
+}
+
+@media only screen and (min-width: 340px) {
+  body {
+    font-size: 10px;
+  }
+
+  .main-card .info {
+    font-size: 1.5em;
+  }
+}
+
+@media only screen and (min-width: 448px) {
+  body {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  body {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  body {
+    font-size: 1.1vw;
+  }
+
+  .main-card .info {
+    font-size: 1.75em;
+  }
 }

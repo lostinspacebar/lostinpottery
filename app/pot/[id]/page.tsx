@@ -20,8 +20,8 @@ export default async function PotDetails({
 
   const gallery = pot.images.map((image) => (
     <div key={image} className="gallery-item w-full mb-4 md:mb-8">
-      <a href={image}>
-        <img src={image} className="rounded-box" />
+      <a href={image} target="_blank">
+        <img src={image} className="rounded-box" alt={pot.name} />
       </a>
     </div>
   ));
