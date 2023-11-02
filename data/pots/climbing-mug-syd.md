@@ -12,7 +12,7 @@ status: unavailable
 
 This mug is part of a series of mugs that have a climbing theme. 
 
-This one uses a pinch handle that mimics a climbing wall with a crack. The art on the mug shows popular views in Yosemite including the Dawn Wall and the Tunnel View.
+This one has a handle that mimics a ATC style belay device and includes a message for a specific human who is obviously the best belayer in the world.
 
 {{DETAILS}}
 
