@@ -4,7 +4,7 @@ import "./globals.css";
 
 const mainFont = Text_Me_One({
   weight: "400",
-  subsets: [ "latin" ]
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -19,6 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.8em%22 font-size=%22100%22 fill=%22red%22>꩜</text></svg>"
+        />
+      </head>
       <body className={mainFont.className}>
         <main className="flex min-h-screen flex-col justify-between max-w-5xl mx-auto">
           {children}
