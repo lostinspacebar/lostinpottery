@@ -7,6 +7,7 @@ images:
   - /images/pots/cat-mug-gus/cat-mug-gus-03.jpg
   - /images/pots/cat-mug-gus/cat-mug-gus-04.jpg
   - /images/pots/cat-mug-gus/cat-mug-gus-05.jpg
-status: available
+status: unavailable
+claimedBy: Julie
 ---
 

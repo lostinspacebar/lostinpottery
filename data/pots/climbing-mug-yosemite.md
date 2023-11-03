@@ -9,6 +9,7 @@ images:
   - /images/pots/climbing-mug-yosemite/climbing-mug-yosemite-05.jpg
   - /images/pots/climbing-mug-yosemite/climbing-mug-yosemite-06.jpg
 status: unavailable
+claimedBy: Siva
 ---
 
 This mug is part of a series of mugs that have a climbing theme. 
