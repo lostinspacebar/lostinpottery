@@ -96,6 +96,7 @@ p {
 
 .gallery-item {
   filter: drop-shadow(0px 0px 1em #00000033);
+  @apply w-full mb-2 md:mb-4
 }
 
 @layer base {
