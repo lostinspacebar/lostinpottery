@@ -37,10 +37,10 @@ export default async function PotDetails({
 
   const claimButton =
     pot.status === "available" ? (
-      <button className="btn btn-wide">Get this mug!</button>
+      <button className="btn btn-wide">Get this piece!</button>
     ) : (
       <button className="btn btn-wide" disabled aria-disabled>
-        Sorry, someone already has this mug.
+        Sorry, someone already has this piece.
       </button>
     );
 
