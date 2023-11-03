@@ -1,4 +1,5 @@
 import { getAllPotIds, getPot } from "@/lib/getPots";
+import Image from "next/image";
 
 export async function generateStaticParams() {
   const ids = await getAllPotIds();
@@ -21,7 +22,14 @@ export default async function PotDetails({
   const gallery = pot.images.map((image) => (
     <div key={image} className="gallery-item w-full mb-4 md:mb-8">
       <a href={image} target="_blank">
-        <img src={image} className="rounded-box" alt={pot.name} />
+      <Image
+          alt="LOST.IN.POTTERY"
+          className="rounded-box w-full h-auto"
+          src={image}
+          width="0"
+          height="0"
+          sizes="100vw"
+        />
       </a>
     </div>
   ));
