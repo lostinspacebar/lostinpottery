@@ -6,6 +6,7 @@ import html from "remark-html";
 import { Pot } from "./pot";
 
 export const DATA_DIRECTORY = path.join(process.cwd(), "data");
+export const IMAGES_DIRECTORY = path.join(process.cwd(), "public/images");
 
 /**
  * Gets Ids for all pots.
@@ -51,12 +52,24 @@ export const getPot = async (
       .process(matterResult.content);
     pageContent = processedContent.toString();
   }
+
+  let images: string[] = matterResult.data.images;
+  if (!matterResult.data.images) {
+    images = (
+      await fs.readdir(path.join(IMAGES_DIRECTORY, "pots", id))
+    )
+      .filter((fileName) => path.extname(fileName) === ".jpg")
+      .map((fileName) => `/images/pots/${id}/${fileName}`);
+  }
+
+  const heroImage = matterResult.data.heroImage ?? images[0];
+
   return {
     id: id,
     name: matterResult.data.name,
     description: matterResult.data.description,
-    heroImage: matterResult.data.images[0],
-    images: matterResult.data.images,
+    heroImage,
+    images,
     link: `/pot/${id}`,
     status: matterResult.data.status,
     pageContent,
