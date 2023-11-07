@@ -3,6 +3,7 @@ import path from "path";
 
 interface ResponsiveImageProps {
   alt?: string;
+  multiplier?: number;
   src: string;
   className: string;
 }
@@ -30,13 +31,14 @@ export default async function ResponsiveImage(props: ResponsiveImageProps) {
     aspectRatio = Number(match[1]) / Number(match[2]);
   }
 
+  const multiplier = props.multiplier ?? 1;
   const imageSizes = [ 150, 300, 600, 1000 ];
   const srcset = [];
   const sizes = [];
   for (const imageSize of imageSizes) {
     const urlForSize = path.join(pathInfo.dir.replace("/images", "/images/.resized"), resizedImages.find(name => name.startsWith(`${pathInfo.name}-${imageSize}x`)) as string);
     srcset.push(`${urlForSize} ${imageSize}w`);
-    sizes.push(`(max-width: ${imageSize * 3}px) ${imageSize}px`);
+    sizes.push(`(max-width: ${imageSize * 3 * multiplier}px) ${imageSize}px`);
   }
 
   return (
