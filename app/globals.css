@@ -162,3 +162,9 @@ p {
     font-size: 1.75em;
   }
 }
+
+.responsive-image-container {
+  background-image: url('/images/placeholder.jpg');
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
