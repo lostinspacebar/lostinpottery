@@ -53,6 +53,7 @@ async function exists(f) {
 
     const resizeImage = async (width) => {
       await image.resize(width, Jimp.AUTO);
+      await image.quality(85);
       await image.writeAsync(
         `${relativeResizedDir}/${pathInfo.name}-${image.bitmap.width}x${image.bitmap.height}${pathInfo.ext}`
       );

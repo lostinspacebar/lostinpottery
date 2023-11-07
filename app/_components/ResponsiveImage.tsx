@@ -36,7 +36,7 @@ export default async function ResponsiveImage(props: ResponsiveImageProps) {
   for (const imageSize of imageSizes) {
     const urlForSize = path.join(pathInfo.dir.replace("/images", "/images/.resized"), resizedImages.find(name => name.startsWith(`${pathInfo.name}-${imageSize}x`)) as string);
     srcset.push(`${urlForSize} ${imageSize}w`);
-    sizes.push(`(max-width: ${imageSize * 2}px) ${imageSize}px`);
+    sizes.push(`(max-width: ${imageSize * 3}px) ${imageSize}px`);
   }
 
   return (
