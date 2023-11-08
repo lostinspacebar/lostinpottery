@@ -1,24 +1,12 @@
 import { getAllPots } from "@/lib/getPots";
+import FilteredListing from "./_components/FilteredListing";
+import MainListingItem from "./_components/MainListingItem";
 import ResponsiveImage from "./_components/ResponsiveImage";
 
 export default async function Home() {
   const pots = await getAllPots();
   const cards = pots.map((pot) => (
-    <div key={pot.id} className="relative card">
-      <a href={pot.link}>
-        <ResponsiveImage
-          alt="LOST.IN.POTTERY"
-          className="w-full h-auto object-cover mt-4 md:mt-8"
-          src={pot.heroImage}
-          size={50}
-        />
-        <div className="info">
-          <h2>{pot.name}</h2>
-          <div className="description">{pot.description}</div>
-          <div className="status">{pot.status}</div>
-        </div>
-      </a>
-    </div>
+    <MainListingItem key={pot.id} pot={pot} />
   ));
 
   return (
@@ -39,7 +27,7 @@ export default async function Home() {
             and I like making pots.
           </div>
         </div>
-        {cards}
+        <FilteredListing pots={pots}>{cards}</FilteredListing>
       </div>
     </div>
   );

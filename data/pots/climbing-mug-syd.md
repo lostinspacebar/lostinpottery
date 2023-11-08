@@ -9,6 +9,7 @@ images:
   - /images/pots/climbing-mug-syd/syd-05.jpg
 status: unavailable
 claimedBy: Syd
+type: mug
 ---
 
 This mug is part of a series of mugs that have a climbing theme. 

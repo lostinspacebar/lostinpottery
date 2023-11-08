@@ -55,9 +55,7 @@ export const getPot = async (
 
   let images: string[] = matterResult.data.images;
   if (!matterResult.data.images) {
-    images = (
-      await fs.readdir(path.join(IMAGES_DIRECTORY, "pots", id))
-    )
+    images = (await fs.readdir(path.join(IMAGES_DIRECTORY, "pots", id)))
       .filter((fileName) => path.extname(fileName) === ".jpg")
       .map((fileName) => `/images/pots/${id}/${fileName}`);
   }
@@ -73,5 +71,6 @@ export const getPot = async (
     link: `/pot/${id}`,
     status: matterResult.data.status,
     pageContent,
+    type: matterResult.data.type,
   };
 };

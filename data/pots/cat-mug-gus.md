@@ -9,5 +9,6 @@ images:
   - /images/pots/cat-mug-gus/cat-mug-gus-05.jpg
 status: unavailable
 claimedBy: Julie
+type: mug
 ---
 

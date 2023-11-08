@@ -2,6 +2,7 @@
 name: Cassie
 description: A simple angular pitcher.
 status: available
+type: pitcher
 ---
 
 A speckled pitcher with simple lines and minimal accent colors. 
