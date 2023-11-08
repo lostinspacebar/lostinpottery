@@ -1,13 +1,6 @@
 ---
 name: Yosemite
 description: Look down tunnel view while holding onto a V2 pinch.
-images:
-  - /images/pots/climbing-mug-yosemite/climbing-mug-yosemite-01.jpg
-  - /images/pots/climbing-mug-yosemite/climbing-mug-yosemite-02.jpg
-  - /images/pots/climbing-mug-yosemite/climbing-mug-yosemite-03.jpg
-  - /images/pots/climbing-mug-yosemite/climbing-mug-yosemite-04.jpg
-  - /images/pots/climbing-mug-yosemite/climbing-mug-yosemite-05.jpg
-  - /images/pots/climbing-mug-yosemite/climbing-mug-yosemite-06.jpg
 status: unavailable
 claimedBy: Siva
 type: mug
