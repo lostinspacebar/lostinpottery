@@ -10,6 +10,7 @@ export default async function Home() {
           alt="LOST.IN.POTTERY"
           className="w-full h-auto object-cover mt-4 md:mt-8"
           src={pot.heroImage}
+          size={50}
         />
         <div className="info">
           <h2>{pot.name}</h2>
@@ -28,6 +29,7 @@ export default async function Home() {
             alt="LOST.IN.POTTERY"
             className="w-full h-auto object-cover"
             src="/images/main-card-bg.jpg"
+            size={50}
           />
           <div className="info absolute bottom-0">
             Hi!

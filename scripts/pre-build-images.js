@@ -22,7 +22,7 @@ async function exists(f) {
     "lastProcessed"
   );
   let lastProcessedTime = new Date(0);
-  if (await exists(lastProcessedMarkerFilePath)) {
+  if (!process.env.FORCE_GENERATE_IMAGES && await exists(lastProcessedMarkerFilePath)) {
     lastProcessedTime = (await fs.stat(lastProcessedMarkerFilePath)).mtime;
   }
 
@@ -53,16 +53,16 @@ async function exists(f) {
 
     const resizeImage = async (width) => {
       await image.resize(width, Jimp.AUTO);
-      await image.quality(85);
+      await image.quality(80);
       await image.writeAsync(
         `${relativeResizedDir}/${pathInfo.name}-${image.bitmap.width}x${image.bitmap.height}${pathInfo.ext}`
       );
     };
 
-    await resizeImage(1000);
-    await resizeImage(600);
-    await resizeImage(300);
-    await resizeImage(150);
+    await resizeImage(2000);
+    await resizeImage(800);
+    await resizeImage(500);
+    await resizeImage(200);
 
     console.log(`Processed ${imagePath}`);
   }

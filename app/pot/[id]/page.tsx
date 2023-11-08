@@ -26,7 +26,7 @@ export default async function PotDetails({
           alt="LOST.IN.POTTERY"
           className="rounded-box w-full h-auto"
           src={image}
-          multiplier={2}
+          size={25}
         />
       </a>
     </div>
