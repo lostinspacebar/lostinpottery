@@ -12,6 +12,7 @@ body {
 
 .card {
   overflow: visible;
+  @apply mt-4 md:mt-8;
 }
 
 .filter-card {
@@ -73,6 +74,10 @@ body {
 
 .card a:hover h2 {
   padding: 0em 2em 0em 0.4em;
+}
+
+.main-card {
+  margin-top: 0;
 }
 
 .main-card .info {
@@ -188,7 +193,7 @@ p {
 }
 
 .responsive-image-container {
-  background-image: url('/images/placeholder.jpg');
+  background-image: url('/images/placeholder.png');
   background-repeat: no-repeat;
   background-position: 50%;
 }

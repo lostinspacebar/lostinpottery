@@ -32,19 +32,26 @@ export default async function ResponsiveImage(props: ResponsiveImageProps) {
   }
 
   const size = `${props.size ?? 100}vw`;
-  const imageSizes = [ 200, 500, 800 ];
+  const imageSizes = [200, 500, 800];
   const srcset = [];
   const sizes = [];
   for (const imageSize of imageSizes) {
-    const urlForSize = path.join(pathInfo.dir.replace("/images", "/images/.resized"), resizedImages.find(name => name.startsWith(`${pathInfo.name}-${imageSize}x`)) as string);
+    const urlForSize = path.join(
+      pathInfo.dir.replace("/images", "/images/.resized"),
+      resizedImages.find((name) =>
+        name.startsWith(`${pathInfo.name}-${imageSize}x`)
+      ) as string
+    );
     srcset.push(`${urlForSize} ${imageSize}w`);
   }
 
+  const classes = props.className + " responsive-image-container";
+
   return (
-    <div style={{ aspectRatio }} className="responsive-image-container">
+    <div style={{ aspectRatio }} className={classes}>
       <img
         src={props.src}
-        srcSet={srcset.join(', ')}
+        srcSet={srcset.join(", ")}
         sizes={size}
         alt={props.alt ?? props.src}
         className={props.className}

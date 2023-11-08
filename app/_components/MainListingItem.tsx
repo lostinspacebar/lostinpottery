@@ -13,7 +13,7 @@ export default function MainListingItem(props: MainListingItemProps) {
       <a href={pot.link}>
         <ResponsiveImage
           alt="LOST.IN.POTTERY"
-          className="w-full h-auto object-cover mt-4 md:mt-8"
+          className="w-full h-auto object-cover"
           src={pot.heroImage}
           size={50}
         />
