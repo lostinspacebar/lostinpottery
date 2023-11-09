@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <div>
-      <div className="relative columns-2 gap-4 md:gap-8">
+      <div className="relative columns-3 gap-4 md:gap-8">
         <div className="relative card main-card">
           <ResponsiveImage
             alt="LOST.IN.POTTERY"

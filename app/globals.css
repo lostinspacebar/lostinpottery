@@ -48,7 +48,7 @@ body {
 .card .info h2 {
   color: #fff;
   font-weight: 300;
-  font-size: 1.7em;
+  font-size: 1.4em;
   padding: 0em 1em 0em 0.4em;
   background-color: #000000aa;
   right: 0px;
@@ -60,13 +60,16 @@ body {
   clear: both;
   padding: 1em;
   color: #000;
-  font-size: 0.9em;
+  font-size: 0.7em;
   background-color: #fffffff0;
 }
 
 .card .info .status {
+  display: inline;
+  float: right;
   color: #333;
-  font-size: 1em;
+  background-color: #ffffff55;
+  font-size: 0.7em;
   text-transform: uppercase;
   text-align: right;
   padding: 0.5em;
@@ -83,7 +86,7 @@ body {
 .main-card .info {
   color: #000;
   left: 0;
-  font-size: 1.75em;
+  font-size: 1.2em;
   margin: 0;
   padding: 1.5em;
 }
@@ -156,11 +159,11 @@ p {
 
 @media only screen and (min-width: 340px) {
   body {
-    font-size: 10px;
+    font-size: 8px;
   }
 
   .main-card .info {
-    font-size: 1.3em;
+    font-size: 0.9em;
   }
 }
 
@@ -168,27 +171,39 @@ p {
   body {
     font-size: 12px;
   }
-}
 
-@media only screen and (min-width: 700px) {
-  body {
-    font-size: 20px;
+  .main-card .info {
+    font-size: 1em;
   }
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 750px) {
   body {
-    font-size: 13px;
+    font-size: 17px;
+  }
+
+  .main-card .info {
+    font-size: 1em;
+  }
+}
+
+@media only screen and (min-width: 950px) {
+  body {
+    font-size: 18px;
+  }
+
+  .main-card .info {
+    font-size: 1.2em;
   }
 }
 
 @media only screen and (min-width: 1200px) {
   body {
-    font-size: 1.1vw;
+    font-size: 19px;
   }
 
   .main-card .info {
-    font-size: 1.75em;
+    font-size: 1.4em;
   }
 }
 
