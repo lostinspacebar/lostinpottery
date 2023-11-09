@@ -14,6 +14,8 @@ export default function FilteredListing({
   const [showMugs, setShowMugs] = useState(true);
   const [showPitchers, setShowPitchers] = useState(true);
   const [showBowls, setShowBowls] = useState(true);
+  const [showVases, setShowVases] = useState(true);
+  const [showOther, setShowOther] = useState(true);
   const [filteredListing, setFilteredListing] = useState(fullListing);
 
   useEffect(() => {
@@ -32,10 +34,16 @@ export default function FilteredListing({
       if (pot.type === 'bowl' && !showBowls) {
         return false;
       }
+      if (pot.type === 'vase' && !showVases) {
+        return false;
+      }
+      if (pot.type === 'other' && !showOther) {
+        return false;
+      }
       return true;
     });
     setFilteredListing(filtered)
-  }, [showOnlyAvailable, showMugs, showPitchers, showBowls]);
+  }, [showOnlyAvailable, showMugs, showPitchers, showBowls, showVases, showOther]);
 
   return (
     <>
@@ -66,6 +74,18 @@ export default function FilteredListing({
             <label className="label cursor-pointer">
               <span className="label-text">Bowls</span>
               <input type="checkbox" className="filter-toggle" checked={showBowls} onChange={() => setShowBowls(!showBowls)} />
+            </label>
+          </div>
+          <div className="form-control">
+            <label className="label cursor-pointer">
+              <span className="label-text">Vases</span>
+              <input type="checkbox" className="filter-toggle" checked={showVases} onChange={() => setShowVases(!showVases)} />
+            </label>
+          </div>
+          <div className="form-control">
+            <label className="label cursor-pointer">
+              <span className="label-text">Other</span>
+              <input type="checkbox" className="filter-toggle" checked={showOther} onChange={() => setShowOther(!showOther)} />
             </label>
           </div>
         </div>

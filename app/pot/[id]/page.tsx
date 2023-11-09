@@ -1,5 +1,6 @@
 import ResponsiveImage from "@/app/_components/ResponsiveImage";
 import { getAllPotIds, getPot } from "@/lib/getPots";
+import { getResponsiveImages } from "@/lib/getResponsiveSizes";
 
 export async function generateStaticParams() {
   const ids = await getAllPotIds();
@@ -19,18 +20,21 @@ export default async function PotDetails({
   const description = contentParts[0] ?? "";
   const details = contentParts[1] ?? "";
 
-  const gallery = pot.images.map((image) => (
-    <div key={image} className="gallery-item">
-      <a href={image} target="_blank">
-        <ResponsiveImage
-          alt="LOST.IN.POTTERY"
-          className="rounded-box w-full h-auto"
-          src={image}
-          size={25}
-        />
-      </a>
-    </div>
-  ));
+  const gallery = pot.images.map(async (image) => {
+    const responsiveImagesInfo = await getResponsiveImages(image);
+    return (
+      <div key={image} className="gallery-item">
+        <a href={responsiveImagesInfo.largestImageUrl} target="_blank">
+          <ResponsiveImage
+            alt="LOST.IN.POTTERY"
+            className="rounded-box w-full h-auto"
+            src={image}
+            size={25}
+          />
+        </a>
+      </div>
+    );
+  });
 
   const claimButton =
     pot.status === "available" ? (

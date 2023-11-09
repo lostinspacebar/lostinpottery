@@ -1,5 +1,4 @@
-import fs from "fs/promises";
-import path from "path";
+import { getResponsiveImages } from "@/lib/getResponsiveSizes";
 
 interface ResponsiveImageProps {
   alt?: string;
@@ -9,53 +8,28 @@ interface ResponsiveImageProps {
 }
 
 export default async function ResponsiveImage(props: ResponsiveImageProps) {
-  const pathInfo = path.parse(props.src);
-  const resizedImagesDir = path.join(
-    process.cwd(),
-    "public",
-    "images",
-    ".resized"
-  );
-  const relativeResizedImagesDir = path.join(
-    resizedImagesDir,
-    pathInfo.dir.replace("/images", "")
-  );
-  const resizedImages = (await fs.readdir(relativeResizedImagesDir)).filter(
-    (fileName) => fileName.startsWith(pathInfo.name)
-  );
-
-  const sizeRegexp = new RegExp(`${pathInfo.name}-\(\\d+\)x\(\\d+\).jpg`, "g");
-  const match = sizeRegexp.exec(resizedImages[0]);
-  let aspectRatio = 1;
-  if (match) {
-    aspectRatio = Number(match[1]) / Number(match[2]);
-  }
-
+  const responsiveImagesInfo = await getResponsiveImages(props.src);
   const size = `${props.size ?? 100}vw`;
-  const imageSizes = [200, 500, 800];
   const srcset = [];
   const sizes = [];
-  for (const imageSize of imageSizes) {
-    const urlForSize = path.join(
-      pathInfo.dir.replace("/images", "/images/.resized"),
-      resizedImages.find((name) =>
-        name.startsWith(`${pathInfo.name}-${imageSize}x`)
-      ) as string
-    );
-    srcset.push(`${urlForSize} ${imageSize}w`);
+  for (const imageSize of responsiveImagesInfo.imageSizes) {
+    srcset.push(`${responsiveImagesInfo.images.get(imageSize)} ${imageSize}w`);
   }
 
   const classes = props.className + " responsive-image-container";
 
   return (
-    <div style={{ aspectRatio }} className={classes}>
+    <div
+      style={{ aspectRatio: responsiveImagesInfo.aspectRatio }}
+      className={classes}
+    >
       <img
-        src={props.src}
+        src={responsiveImagesInfo.largestImageUrl}
         srcSet={srcset.join(", ")}
         sizes={size}
         alt={props.alt ?? props.src}
         className={props.className}
-        style={{ aspectRatio }}
+        style={{ aspectRatio: responsiveImagesInfo.aspectRatio }}
       />
     </div>
   );
