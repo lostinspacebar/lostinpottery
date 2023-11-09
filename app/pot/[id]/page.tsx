@@ -27,7 +27,7 @@ export default async function PotDetails({
         <a href={responsiveImagesInfo.largestImageUrl} target="_blank">
           <ResponsiveImage
             alt="LOST.IN.POTTERY"
-            className="rounded-box w-full h-auto"
+            className=""
             src={image}
             size={25}
           />

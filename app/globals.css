@@ -119,11 +119,18 @@ p {
 
 .gallery-item {
   filter: drop-shadow(0px 0px 1em #00000033);
-  @apply w-full mb-2 md:mb-4
+  @apply w-full mb-2 md:mb-4;
+}
+
+.gallery-item img {
+  border-radius: 1em;
+  @apply w-full h-auto;
 }
 
 @layer base {
-  ul, ol {
+
+  ul,
+  ol {
     list-style: revert;
     margin: revert;
     padding: revert;
@@ -138,7 +145,8 @@ p {
   padding-bottom: 3em;
 }
 
-.btn[disabled], .btn:disabled {
+.btn[disabled],
+.btn:disabled {
   color: #000;
 }
 
