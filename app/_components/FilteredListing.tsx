@@ -7,7 +7,7 @@ export default function FilteredListing({
   pots,
   children: fullListing,
 }: {
-  pots: Pot[]
+  pots: Pot[];
   children: React.ReactNode;
 }) {
   const [showOnlyAvailable, setShowOnlyAvailable] = useState(false);
@@ -16,34 +16,48 @@ export default function FilteredListing({
   const [showBowls, setShowBowls] = useState(true);
   const [showVases, setShowVases] = useState(true);
   const [showOther, setShowOther] = useState(true);
+  const [searchString, setSearchString] = useState("");
   const [filteredListing, setFilteredListing] = useState(fullListing);
 
   useEffect(() => {
     const children = Children.toArray(fullListing);
     const filtered = children.filter((child, index) => {
       const pot = pots[index];
-      if (showOnlyAvailable && pot.status !== 'available') {
+      if (showOnlyAvailable && pot.status !== "available") {
         return false;
       }
-      if (pot.type === 'mug' && !showMugs) {
+      if (pot.type === "mug" && !showMugs) {
         return false;
       }
-      if (pot.type === 'pitcher' && !showPitchers) {
+      if (pot.type === "pitcher" && !showPitchers) {
         return false;
       }
-      if (pot.type === 'bowl' && !showBowls) {
+      if (pot.type === "bowl" && !showBowls) {
         return false;
       }
-      if (pot.type === 'vase' && !showVases) {
+      if (pot.type === "vase" && !showVases) {
         return false;
       }
-      if (pot.type === 'other' && !showOther) {
+      if (pot.type === "other" && !showOther) {
         return false;
+      }
+      if (searchString !== '') {
+        if (!(pot.type + pot.description + pot.pageContent + pot.name).toLowerCase().includes(searchString.toLowerCase())) {
+          return false;
+        }
       }
       return true;
     });
-    setFilteredListing(filtered)
-  }, [showOnlyAvailable, showMugs, showPitchers, showBowls, showVases, showOther]);
+    setFilteredListing(filtered);
+  }, [
+    showOnlyAvailable,
+    showMugs,
+    showPitchers,
+    showBowls,
+    showVases,
+    showOther,
+    searchString,
+  ]);
 
   return (
     <>
@@ -53,39 +67,78 @@ export default function FilteredListing({
         </summary>
         <div className="collapse-content">
           <div className="form-control">
+            <input
+              type="text"
+              placeholder="Search ..."
+              className="input search-input w-full"
+              value={searchString}
+              onChange={(e) => setSearchString(e.target.value)}
+            />
+          </div>
+          <div className="form-control">
             <label className="label cursor-pointer">
               <span className="label-text">Only Show Available</span>
-              <input type="checkbox" className="filter-toggle" checked={showOnlyAvailable} onChange={() => setShowOnlyAvailable(!showOnlyAvailable)} />
+              <input
+                type="checkbox"
+                className="filter-toggle"
+                checked={showOnlyAvailable}
+                onChange={() => setShowOnlyAvailable(!showOnlyAvailable)}
+              />
             </label>
           </div>
           <div className="form-control">
             <label className="label cursor-pointer">
               <span className="label-text">Mugs</span>
-              <input type="checkbox" className="filter-toggle" checked={showMugs} onChange={() => setShowMugs(!showMugs)} />
+              <input
+                type="checkbox"
+                className="filter-toggle"
+                checked={showMugs}
+                onChange={() => setShowMugs(!showMugs)}
+              />
             </label>
           </div>
           <div className="form-control">
             <label className="label cursor-pointer">
               <span className="label-text">Pitchers</span>
-              <input type="checkbox" className="filter-toggle" checked={showPitchers} onChange={() => setShowPitchers(!showPitchers)} />
+              <input
+                type="checkbox"
+                className="filter-toggle"
+                checked={showPitchers}
+                onChange={() => setShowPitchers(!showPitchers)}
+              />
             </label>
           </div>
           <div className="form-control">
             <label className="label cursor-pointer">
               <span className="label-text">Bowls</span>
-              <input type="checkbox" className="filter-toggle" checked={showBowls} onChange={() => setShowBowls(!showBowls)} />
+              <input
+                type="checkbox"
+                className="filter-toggle"
+                checked={showBowls}
+                onChange={() => setShowBowls(!showBowls)}
+              />
             </label>
           </div>
           <div className="form-control">
             <label className="label cursor-pointer">
               <span className="label-text">Vases</span>
-              <input type="checkbox" className="filter-toggle" checked={showVases} onChange={() => setShowVases(!showVases)} />
+              <input
+                type="checkbox"
+                className="filter-toggle"
+                checked={showVases}
+                onChange={() => setShowVases(!showVases)}
+              />
             </label>
           </div>
           <div className="form-control">
             <label className="label cursor-pointer">
               <span className="label-text">Other</span>
-              <input type="checkbox" className="filter-toggle" checked={showOther} onChange={() => setShowOther(!showOther)} />
+              <input
+                type="checkbox"
+                className="filter-toggle"
+                checked={showOther}
+                onChange={() => setShowOther(!showOther)}
+              />
             </label>
           </div>
         </div>
