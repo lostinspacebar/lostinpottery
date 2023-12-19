@@ -226,3 +226,11 @@ h4 {
 .price-highlight {
   background-color: #fff357;
 }
+
+.card a {
+  border: 0;
+}
+
+.gallery-item a {
+  border: 0;
+}
