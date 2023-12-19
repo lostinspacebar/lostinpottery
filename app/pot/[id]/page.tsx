@@ -126,7 +126,7 @@ export default async function PotDetails({
           </ul>
           <h4>Step 2. Send me a message</h4>
           <p>
-            Send me an email (adityagaddam@gmail.com) or DM on Instagram (@lostinpottery) and tell me about your donation and where to send your pot.
+            Send me an email (hello@lostinpottery.com) or DM on Instagram (@lostinpottery) and tell me about your donation and where to send your pot.
           </p>
         </>
       )}
