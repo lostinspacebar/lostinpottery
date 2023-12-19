@@ -3,6 +3,7 @@ name: Bertha
 description: A medium sized wide pitcher.
 status: available
 type: pitcher
+price: 40
 ---
 
 A colorful wide pitcher that's primarily purple with rings of various colors.

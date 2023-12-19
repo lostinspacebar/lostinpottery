@@ -4,6 +4,7 @@ description: A soup can, that doesn't hold soup.
 status: available
 functional: false
 type: other
+price: 35
 ---
 
 A small soup can, that doesn't hold soup. This was mostly made for fun and is not functional, other than maybe holding a few small trinkets on your counter.

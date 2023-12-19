@@ -8,4 +8,5 @@ export interface Pot {
   status: string;
   pageContent?: string;
   type: string;
+  price: number;
 }

@@ -72,5 +72,6 @@ export const getPot = async (
     status: matterResult.data.status,
     pageContent,
     type: matterResult.data.type,
+    price: matterResult.data.price
   };
 };

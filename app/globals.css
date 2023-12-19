@@ -206,8 +206,23 @@ p {
   background-position: 50%;
 }
 
-.search-input {
+.form-control .input {
   border: 1px solid #ccc;
   background-color: #f8f8f8;
+}
+
+.search-input {
   margin-bottom: 2em;
+}
+
+a {
+  border-bottom: 2px dotted #444;
+}
+
+h4 {
+  font-size: 1.3em;
+}
+
+.price-highlight {
+  background-color: #fff357;
 }

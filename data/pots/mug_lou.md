@@ -3,6 +3,7 @@ name: Lou
 description: A smol mug
 status: available
 type: mug
+price: 20
 ---
 
 A small simple mug with a rustic glaze.

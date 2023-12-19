@@ -3,6 +3,7 @@ name: Sadie
 description: A smol vase
 status: available
 type: vase
+price: 25
 ---
 
 A small vase. This was the first vase-ish things that I threw as a potter. 

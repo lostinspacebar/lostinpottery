@@ -3,6 +3,7 @@ name: Cassie
 description: A simple angular pitcher.
 status: available
 type: pitcher
+price: 40
 ---
 
 A speckled pitcher with simple lines and minimal accent colors. 

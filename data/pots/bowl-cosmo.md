@@ -3,6 +3,7 @@ name: Cosmo
 description: A medium sized chip and dip bowl
 status: available
 type: bowl
+price: 30
 ---
 
 A larger space for chips and a small inner bowl for your dip. Or do it the other way around. Or fill it all with dip and just scoop it all out with your hands. Do whatever you want. I'm not a cop. 

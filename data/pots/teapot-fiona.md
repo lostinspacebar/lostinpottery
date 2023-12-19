@@ -3,6 +3,7 @@ name: Fiona
 description: A small teapot
 status: available
 type: other
+price: 50
 ---
 
 This was the first teapot I made. Although a functional teapot, the spout doesn't pour as well as it should. 

@@ -1,6 +1,7 @@
 import ResponsiveImage from "@/app/_components/ResponsiveImage";
 import { getAllPotIds, getPot } from "@/lib/getPots";
 import { getResponsiveImages } from "@/lib/getResponsiveSizes";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   const ids = await getAllPotIds();
@@ -38,7 +39,9 @@ export default async function PotDetails({
 
   const claimButton =
     pot.status === "available" ? (
-      <button className="btn btn-wide">Get this piece!</button>
+      <Link className="btn btn-wide" href="#get-this-piece">
+        Get this piece -- ${pot.price} USD
+      </Link>
     ) : (
       <button className="btn btn-wide" disabled aria-disabled>
         Sorry, someone already has this piece.
@@ -67,6 +70,66 @@ export default async function PotDetails({
         </div>
         <div className="gallery col-span-2">{gallery}</div>
       </div>
+      {pot.status === "available" && (
+        <>
+          <h3 id="get-this-piece">Get this piece</h3>
+          <p>
+            The goal of this endeavour is to get pots in people&apos;s hands and
+            raise money for worthy causes along the way.
+          </p>
+          <p>
+            The recommmend price for this is piece is  <span className="price-highlight">${pot.price} USD</span>. But
+            nothing is stopping you from giving a little more to a cause you
+            care about :)
+          </p>
+          <h4>Step 1. Send money</h4>
+          <p>
+            Donate the recommended price ($
+            {pot.price} USD or more) to a charity of your choice.
+          </p>
+          <p>
+            Here are a few good ones to choose from.
+          </p>
+          <ul>
+            <li>
+              <Link
+                href="https://www.charitynavigator.org/ein/840772672"
+                target="_blank"
+              >
+                Food Bank of the Rockies
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="https://www.charitynavigator.org/ein/931057665"
+                target="_blank"
+              >
+                Palestine Children&apos;s Relief Fund
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="https://www.charitynavigator.org/ein/840611876"
+                target="_blank"
+              >
+                Native American Rights Fund
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="https://www.charitynavigator.org/ein/954681287"
+                target="_blank"
+              >
+                Trevor Project
+              </Link>
+            </li>
+          </ul>
+          <h4>Step 2. Send me a message</h4>
+          <p>
+            Send me an email (adityagaddam@gmail.com) or DM on Instagram (@lostinpottery) and tell me about your donation and where to send your pot.
+          </p>
+        </>
+      )}
     </div>
   );
 }

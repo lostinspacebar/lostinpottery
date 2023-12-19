@@ -4,6 +4,7 @@ description: A simple angular bowl with bright inner colors.
 heroImage: /images/pots/bowl-tess/tess-01.jpg
 status: available
 type: bowl
+price: 30
 ---
 
 A simple angular bowl with bright inner colors.
