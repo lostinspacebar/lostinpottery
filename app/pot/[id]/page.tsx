@@ -1,5 +1,6 @@
 import ResponsiveImage from "@/app/_components/ResponsiveImage";
 import { getAllPotIds, getPot } from "@/lib/getPots";
+import { getResponsiveImages } from "@/lib/getResponsiveSizes";
 import Link from "next/link";
 
 export async function generateStaticParams() {
@@ -20,11 +21,12 @@ export default async function PotDetails({
   const description = contentParts[0] ?? "";
   const details = contentParts[1] ?? "";
 
-  const gallery = pot.images.map((image) => {
-    //const responsiveImagesInfo = await getResponsiveImages(image);
-    return (
+  const gallery = [];
+  for(const image of pot.images) {
+    const responsiveImagesInfo = await getResponsiveImages(image);
+    gallery.push((
       <div key={image} className="gallery-item">
-        <a href={image} target="_blank">
+        <a href={responsiveImagesInfo.largestImageUrl} target="_blank">
           <ResponsiveImage
             alt="LOST.IN.POTTERY"
             className=""
@@ -33,8 +35,8 @@ export default async function PotDetails({
           />
         </a>
       </div>
-    );
-  });
+    ));
+  }
 
   const claimButton =
     pot.status === "available" ? (
