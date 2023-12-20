@@ -41,7 +41,7 @@ export default async function PotDetails({
   const claimButton =
     pot.status === "available" ? (
       <Link className="btn btn-wide" href="#get-this-piece">
-        Get this piece -- ${pot.price} USD
+        Donate to get this piece -- ${pot.price} USD
       </Link>
     ) : (
       <button className="btn btn-wide" disabled aria-disabled>
@@ -127,7 +127,7 @@ export default async function PotDetails({
           </ul>
           <h4>Step 2. Send me a message</h4>
           <p>
-            Send me an email (hello@lostinpottery.com) or DM on Instagram (@lostinpottery) and tell me about your donation and where to send your pot.
+            Send me an email (<Link href="mailto:hello@lostinpottery.com">hello@lostinpottery.com</Link>) or DM on Instagram (<Link href="https://www.instagram.com/lostincake">@lostinpottery</Link>) and tell me about your donation and where to send your pot.
           </p>
         </>
       )}

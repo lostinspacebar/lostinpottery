@@ -8,6 +8,8 @@ price: 50
 
 This was the first teapot I made. Although a functional teapot, the spout doesn't pour as well as it should. 
 
+This teapot is accompanied by two small cups.
+
 {{DETAILS}}
 
 ### Process
