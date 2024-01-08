@@ -4,6 +4,7 @@ description: A very smol pitcher
 status: claimed
 type: pitcher
 price: 20
+donated: 20
 ---
 
 A tiny pitcher / pourer made out of porcelain. It has a heavy base and is good as a small pourer for, say, creamer.
