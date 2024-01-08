@@ -1,6 +1,6 @@
 ---
 name: Leila
-description: A medium sized bowl
+description: A very smol pitcher
 status: claimed
 type: pitcher
 price: 20
