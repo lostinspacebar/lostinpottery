@@ -1,7 +1,7 @@
 ---
 name: Syd
 description: Celebrating the world's best belayer
-status: unavailable
+status: gifted
 claimedBy: Syd
 type: mug
 ---

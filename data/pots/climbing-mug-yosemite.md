@@ -1,7 +1,7 @@
 ---
 name: Yosemite
 description: Look down tunnel view while holding onto a V2 pinch.
-status: unavailable
+status: gifted
 claimedBy: Siva
 type: mug
 ---

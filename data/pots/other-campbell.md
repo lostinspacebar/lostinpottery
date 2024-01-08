@@ -1,7 +1,7 @@
 ---
 name: Campbell
 description: A soup can, that doesn't hold soup.
-status: available
+status: claimed
 functional: false
 type: other
 price: 35
