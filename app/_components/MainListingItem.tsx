@@ -20,7 +20,7 @@ export default function MainListingItem(props: MainListingItemProps) {
         <div className="info">
           <h2>{pot.name}</h2>
           <div className="description">{pot.description}</div>
-          <div className="status">{pot.status}</div>
+          <div className="status">{pot.status === 'available' ? 'available' : 'taken'}</div>
         </div>
       </a>
     </div>
