@@ -2,6 +2,7 @@ const { glob } = require("glob");
 const path = require("path");
 const fs = require("fs/promises");
 const Jimp = require("jimp");
+const { rimraf } = require('rimraf');
 
 async function exists(f) {
   try {
@@ -72,6 +73,9 @@ async function exists(f) {
   if (process.env.CI) {
     console.log("CI environment. Deleting original images to save space.");
     const potImagesDir = path.join(imagesDir, "pots");
-    await fs.rmdir(potImagesDir, { recursive: true });
+    await rimraf(`${potImagesDir}/**/*.jpg`, {
+      glob:true
+    });
+    console.log("Deleted original images.");
   }
 })();
