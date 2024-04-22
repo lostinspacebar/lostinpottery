@@ -2,6 +2,7 @@ const { glob } = require("glob");
 const path = require("path");
 const fs = require("fs/promises");
 const Jimp = require("jimp");
+const { DATA_DIRECTORY } = require("@/lib/getPots");
 
 async function exists(f) {
   try {
@@ -68,107 +69,10 @@ async function exists(f) {
   }
 
   await fs.writeFile(lastProcessedMarkerFilePath, new Date().toISOString());
-  process.exit(0);
-
-  const pots = await fs.readdir(potImagesPath, {
-    withFileTypes: true,
-  });
-
-  for (const potEntry of pots) {
-    if (!potEntry.isDirectory()) {
-      continue;
-    }
-
-    const potName = potEntry.name;
-    const potImagesDir = path.join(potImagesPath, potName);
-    const resizedImagesDir = path.join(potImagesDir, ".resized");
-
-    if (!(await exists(resizedImagesDir))) {
-      await fs.mkdir(resizedImagesDir);
-    }
-
-    const lastProcessedMarkerFilePath = path.join(
-      resizedImagesDir,
-      "lastProcessed"
-    );
-    let lastProcessedTime = new Date(0);
-    if (await exists(lastProcessedMarkerFilePath)) {
-      lastProcessedTime = (await fs.stat(lastProcessedMarkerFilePath)).mtime;
-    }
-
-    const potImages = await fs.readdir(potImagesDir, {
-      withFileTypes: true,
-    });
-    for (const potImageEntry of potImages) {
-      if (!potImageEntry.name.endsWith(".jpg")) {
-        continue;
-      }
-      const potImageFileName = potImageEntry.name;
-      const fullPath = path.join(potImagesDir, potImageFileName);
-      const pathInfo = path.parse(fullPath);
-      const modifiedTime = (await fs.stat(fullPath)).mtime;
-
-      if (lastProcessedTime > modifiedTime) {
-        // No changes since last time
-        console.log(`Skipping ${potName}. No changes since last time.`);
-        continue;
-      }
-
-      // Remove all resized pics for this file
-      const resizedImages = (await fs.readdir(resizedImagesDir)).filter(
-        (fileName) => fileName.startsWith(pathInfo.name)
-      );
-      for (const resizedImage of resizedImages) {
-        const result = await fs.rm(path.join(resizedImagesDir, resizedImage), {
-          force: true,
-        });
-      }
-
-      const image = await Jimp.read(fullPath);
-
-      const resizeImage = async (width) => {
-        await image.resize(width, Jimp.AUTO);
-        await image.writeAsync(
-          `${resizedImagesDir}/${pathInfo.name}-${image.bitmap.width}x${image.bitmap.height}${pathInfo.ext}`
-        );
-      };
-
-      await resizeImage(1000);
-      await resizeImage(600);
-      await resizeImage(300);
-      await resizeImage(150);
-    }
-
-    await fs.writeFile(lastProcessedMarkerFilePath, new Date().toISOString());
-    console.log(`Processed ${potName}.`);
+  
+  if (process.env.CI) {
+    console.log("CI environment. Deleting original images to save space.");
+    const potImagesDir = path.join(DATA_DIRECTORY, "pots");
+    await fs.rmdir(potImagesDir, { recursive: true });
   }
-
-  /*
-  for(const imagePath of images) {
-    const pathInfo = path.parse(imagePath);
-    const resizedFileDir = path.join(pathInfo.dir, ".resized");
-    const processedMarkerFilePath = path.join(resizedFileDir, 'processed');
-    console.log(processedMarkerFilePath);
-
-    if (!fs.existsSync(resizedFileDir)) {
-      await fs.mkdirSync(resizedFileDir);
-    }
-
-    const image = await Jimp.read(imagePath);
-    const imageModifiedTime = fs.statSync(imagePath).mtime;
-    
-    let lastProcessedTime = new Date(0);
-    if (fs.existsSync(processedMarkerFilePath)) {
-      lastProcessedTime = fs.statSync(processedMarkerFilePath).mtime;
-    }
-
-    if (lastProcessedTime > imageModifiedTime) {
-      
-
-      const f = fs.openSync(processedMarkerFilePath, 'w');
-      fs.closeSync(f);
-    }
-    console.log(`Processed ${imagePath}`);
-  }
-  */
 })();
