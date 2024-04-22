@@ -1,11 +1,13 @@
 import fs from "fs/promises";
 import matter from "gray-matter";
+import _ from "lodash";
 import path from "path";
 import { remark } from "remark";
 import html from "remark-html";
 import { Pot } from "./pot";
 
 export const DATA_DIRECTORY = path.join(process.cwd(), "data", "pots");
+export const IMAGES_DIRECTORY = path.join(process.cwd(), "public", "images", ".resized", "pots");
 
 async function exists(f: string) {
   try {
@@ -67,9 +69,13 @@ export const getPot = async (
 
   let images: string[] = matterResult.data.images;
   if (!matterResult.data.images) {
-    images = (await fs.readdir(path.join(DATA_DIRECTORY, id)))
-      .filter((fileName) => path.extname(fileName) === ".jpg")
-      .map((fileName) => `/images/pots/${id}/${fileName}`);
+    images = (await fs.readdir(path.join(IMAGES_DIRECTORY, id)))
+      .filter((fileName) => path.extname(fileName) === ".jpg" && fileName.includes("-2000x"))
+      .map((fileName) => {
+        const name = path.parse(fileName).name;
+        return `/images/pots/${id}/${name.substring(0, name.indexOf("-2000x"))}.jpg`
+      });
+    images = _.uniq(images);
   }
 
   const heroImage = matterResult.data.heroImage ?? images[0];

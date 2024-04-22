@@ -10,6 +10,7 @@ interface ResponsiveImageInfo {
 }
 
 export const getResponsiveImages = async (imageUrl: string) : Promise<ResponsiveImageInfo> => {
+  console.log(imageUrl);
   const pathInfo = path.parse(imageUrl);
   const resizedImagesDir = path.join(
     process.cwd(),
