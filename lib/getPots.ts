@@ -5,8 +5,16 @@ import { remark } from "remark";
 import html from "remark-html";
 import { Pot } from "./pot";
 
-export const DATA_DIRECTORY = path.join(process.cwd(), "data");
-export const IMAGES_DIRECTORY = path.join(process.cwd(), "public/images");
+export const DATA_DIRECTORY = path.join(process.cwd(), "data", "pots");
+
+async function exists(f: string) {
+  try {
+    await fs.stat(f);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 /**
  * Gets Ids for all pots.
@@ -14,11 +22,15 @@ export const IMAGES_DIRECTORY = path.join(process.cwd(), "public/images");
  * @returns list of pot ids
  */
 export const getAllPotIds = async (): Promise<string[]> => {
-  const dataPath = path.join(DATA_DIRECTORY, "pots");
-  const files = await fs.readdir(dataPath);
-  return files
-    .filter((fileName) => path.extname(fileName) === ".md")
-    .map((fileName) => path.parse(fileName).name);
+  const dataPath = path.join(DATA_DIRECTORY);
+  const dirs = await fs.readdir(dataPath);
+  const validPotDirs = []
+  for (const dir of dirs) {
+    if (await exists(path.join(dataPath, dir, dir + ".md"))) {
+      validPotDirs.push(dir);
+    }
+  }
+  return validPotDirs;
 };
 
 /**
@@ -42,7 +54,7 @@ export const getPot = async (
   id: string,
   includePageContent: boolean = false
 ): Promise<Pot> => {
-  const fullPath = path.join(DATA_DIRECTORY, "pots", id + ".md");
+  const fullPath = path.join(DATA_DIRECTORY, id, id + ".md");
   const fileContents = await fs.readFile(fullPath, "utf8");
   const matterResult = matter(fileContents);
   let pageContent = undefined;
@@ -55,7 +67,7 @@ export const getPot = async (
 
   let images: string[] = matterResult.data.images;
   if (!matterResult.data.images) {
-    images = (await fs.readdir(path.join(IMAGES_DIRECTORY, "pots", id)))
+    images = (await fs.readdir(path.join(DATA_DIRECTORY, id)))
       .filter((fileName) => path.extname(fileName) === ".jpg")
       .map((fileName) => `/images/pots/${id}/${fileName}`);
   }

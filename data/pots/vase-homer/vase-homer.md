@@ -28,7 +28,7 @@ Details like nails on the feet and the fingers really make things creepier. Knee
 
 Chains were the last to go on. These were the simplest part of the process.
 
-For glazing, most of the donut is underglaze with a simple clear coat brushed on top. The inside is coated with *Clear* as well so the vase can have water in it. 
+For glazing, most of the donut is underglaze with a simple clear coat brushed on top. The inside is coated with *Clear* as well so the vase can have water in it. The chains only received a coat fo the black underglaze so they wouldn't fuse during the glaze fire and can still move. 
 
 ### Mistakes
 

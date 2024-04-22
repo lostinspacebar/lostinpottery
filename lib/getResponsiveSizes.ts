@@ -15,7 +15,7 @@ export const getResponsiveImages = async (imageUrl: string) : Promise<Responsive
     process.cwd(),
     "public",
     "images",
-    ".resized"
+    ".resized",
   );
   const relativeResizedImagesDir = path.join(
     resizedImagesDir,
@@ -24,7 +24,6 @@ export const getResponsiveImages = async (imageUrl: string) : Promise<Responsive
   const resizedImages = (await fs.readdir(relativeResizedImagesDir)).filter(
     (fileName) => fileName.startsWith(pathInfo.name)
   );
-
   const sizeRegexp = new RegExp(`${pathInfo.name}-\(\\d+\)x\(\\d+\).jpg`, "g");
   const match = sizeRegexp.exec(resizedImages[0]);
   let aspectRatio = 1;
@@ -36,6 +35,9 @@ export const getResponsiveImages = async (imageUrl: string) : Promise<Responsive
   const imageSizes = [200, 500, 800, 2000];
   let largestImageUrl = '';
   for (const imageSize of imageSizes) {
+    const temp = resizedImages.find((name) =>
+      name.startsWith(`${pathInfo.name}-${imageSize}x`)
+    ) as string;
     const urlForSize = path.join(
       pathInfo.dir.replace("/images", "/images/.resized"),
       resizedImages.find((name) =>

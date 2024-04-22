@@ -13,8 +13,8 @@ async function exists(f) {
 }
 
 (async () => {
-  const imagesDir = path.join(process.cwd(), "public", "images");
-  const resizedImagesDir = path.join(imagesDir, ".resized");
+  const imagesDir = path.join(process.cwd(), "data");
+  const resizedImagesDir = path.join(process.cwd(), "public", "images", ".resized");
   await fs.mkdir(resizedImagesDir, { recursive: true });
 
   const lastProcessedMarkerFilePath = path.join(
