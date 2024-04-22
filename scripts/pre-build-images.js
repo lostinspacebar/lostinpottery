@@ -2,7 +2,6 @@ const { glob } = require("glob");
 const path = require("path");
 const fs = require("fs/promises");
 const Jimp = require("jimp");
-const { DATA_DIRECTORY } = require("@/lib/getPots");
 
 async function exists(f) {
   try {
@@ -72,7 +71,7 @@ async function exists(f) {
   
   if (process.env.CI) {
     console.log("CI environment. Deleting original images to save space.");
-    const potImagesDir = path.join(DATA_DIRECTORY, "pots");
+    const potImagesDir = path.join(imagesDir, "pots");
     await fs.rmdir(potImagesDir, { recursive: true });
   }
 })();
